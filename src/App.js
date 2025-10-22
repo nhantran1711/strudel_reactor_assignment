@@ -1,3 +1,4 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import { useEffect, useRef } from "react";
 import { StrudelMirror } from '@strudel/codemirror';
@@ -76,25 +77,30 @@ return (
 
             <div className="container-fluid">
                 <div className="row">
-                    <div className="col-md-8" style={{ maxHeight: '50vh', overflowY: 'auto' }}>
-                        <label htmlFor="exampleFormControlTextarea1" className="form-label">Text to preprocess:</label>
-                        <textarea className="form-control" rows="15" id="proc" ></textarea>
-                    </div>
-                    <div className="col-md-4">
 
-                        <nav>
-                            <button id="process" className="btn btn-outline-primary">Preprocess</button>
-                            <button id="process_play" className="btn btn-outline-primary">Proc & Play</button>
-                            <br />
-                            <button id="play" className="btn btn-outline-primary">Play</button>
-                            <button id="stop" className="btn btn-outline-primary">Stop</button>
-                        </nav>
+                    {/* Text Process */}
+                    <div className="col-md-8">
+                        <label htmlFor="exampleFormControlTextarea1" className="form-label text-dark fw-medium">Type your beat here:...</label>
+                        <textarea className="form-control" rows={15} id="proc" ></textarea>
+                    </div>
+
+                    {/* Control Panel */}
+                    <div className="col-md-4">
+                        <div className="control-panel">
+                            <h5 className="text-center text-dark mb-3 fw-semibold" >Control Panel</h5>
+
+                            <button id="process" className="btn">Preprocess</button>
+                            <button id="process_play" className="btn">Proc & Play</button>
+                            <button id="play" className="btn">Play</button>
+                            <button id="stop" className="btn">Stop</button>
+                        </div>
+
                     </div>
                 </div>
                 <div className="row">
                     <div className="col-md-8" style={{ maxHeight: '50vh', overflowY: 'auto' }}>
                         <div id="editor" />
-                        <div id="output" />
+                        <div id="output" className='mt-2' />
                     </div>
                     <div className="col-md-4">
                         <div className="form-check">

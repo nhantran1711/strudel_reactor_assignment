@@ -36,3 +36,66 @@
     transform: rotate(360deg);
   }
 }
+
+body {
+  background-color: #000; 
+  color: #fff; 
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Text Area*/
+#proc {
+  background-color: #000;
+  color: #fff;
+  border: 1px solid black;
+  border-radius: 0.5;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+  font-size: 0.9rem;
+  font-family: 'Courier New', monospace;
+}
+
+#proc:focus {
+  outline: none; 
+  box-shadow: 0 0 10px #fff; 
+  border-color: #fff;
+}
+
+/* Editor panel */
+#editor {
+  background-color: #000; 
+  color: #fff; 
+  border: 1px solid #fff; 
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+  min-height: 200px;
+  box-shadow: inset 0 0 5px rgba(255, 255, 255, 0.05);
+  overflow-y: auto;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+#editor:focus-within {
+  border-color: #fff;
+  box-shadow: inset 0 0 5px rgba(255, 255, 255, 0.05), 0 0 10px #fff;
+}
+
+.control-panel h5 {
+  color: #fff;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+/* Buttons */
+.control-panel .btn {
+  color: #000; 
+  background-color: #fff; 
+  border: 1px solid #fff;
+  padding: 0.25rem 1rem;
+  font-size: 0.85rem;
+}
+
+.control-panel .btn:hover {
+  background-color: #eee;
+}
+
