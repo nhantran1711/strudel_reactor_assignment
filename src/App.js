@@ -9,9 +9,10 @@ import { getAudioContext, webaudioOutput, registerSynthSounds } from '@strudel/w
 import { registerSoundfonts } from '@strudel/soundfonts';
 import { stranger_tune } from './tunes';
 import console_monkey_patch, { getD3Data } from './console-monkey-patch';
-import { SetupButtons, setGlobalEditor } from './utils/setup';
-import { setProcEditor, Proc } from './utils/proc';
-import { setProcAndPlayEditor, ProcAndPlay } from './utils/procAndPlay';
+import { SetupButtons} from './utils/setup';
+import { Proc } from './utils/proc';
+import { ProcAndPlay } from './utils/procAndPlay';
+import { setGlobalEditor } from './utils/editorContext';
 
 let globalEditor = null;
 
@@ -37,6 +38,7 @@ useEffect(() => {
             canvas.height = canvas.height * 2;
             const drawContext = canvas.getContext('2d');
             const drawTime = [-2, 2]; // time window of drawn haps
+
             globalEditor = new StrudelMirror({
                 defaultOutput: webaudioOutput,
                 getTime: () => getAudioContext().currentTime,
@@ -58,9 +60,7 @@ useEffect(() => {
             });
         
         setGlobalEditor(globalEditor);
-        setProcEditor(globalEditor);
-        setProcAndPlayEditor(globalEditor);
-            
+        
         document.getElementById('proc').value = stranger_tune
         SetupButtons()
         Proc()
@@ -71,7 +71,7 @@ useEffect(() => {
 
 return (
     <div>
-        <h2>Strudel Demo</h2>
+        <h2>Cooking up some beat</h2>
         <main>
 
             <div className="container-fluid">

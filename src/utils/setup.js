@@ -1,10 +1,7 @@
 import { Proc } from "./proc";
+import { getGlobalEditor} from "./editorContext";
 
-let globalEditor = null;
-
-export function setGlobalEditor(editor) {
-    globalEditor = editor;
-}
+const globalEditor = getGlobalEditor();
 
 export function SetupButtons() {
 

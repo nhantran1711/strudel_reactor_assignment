@@ -1,10 +1,7 @@
 import { ProcessText } from "./processText";
+import { getGlobalEditor } from "./editorContext";
 
-let globalEditor = null 
-
-export function setProcEditor(editor) {
-    globalEditor = editor;
-}
+const globalEditor = getGlobalEditor();
 
 export function Proc() {
 
