@@ -1,3 +1,5 @@
+import { Proc } from "./proc";
+
 let globalEditor = null;
 
 export function setGlobalEditor(editor) {
