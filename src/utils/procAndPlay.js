@@ -1,10 +1,10 @@
 import { Proc } from "./proc";
 import { getGlobalEditor } from "./editorContext";
 
-const globalEditor = getGlobalEditor();
-
 
 export function ProcAndPlay() {
+    const globalEditor = getGlobalEditor();
+    
     if (globalEditor != null && globalEditor.repl.state.started === true) {
         console.log(globalEditor)
         Proc()
