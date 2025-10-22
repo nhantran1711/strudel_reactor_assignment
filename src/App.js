@@ -9,6 +9,7 @@ import { getAudioContext, webaudioOutput, registerSynthSounds } from '@strudel/w
 import { registerSoundfonts } from '@strudel/soundfonts';
 import { stranger_tune } from './tunes';
 import console_monkey_patch, { getD3Data } from './console-monkey-patch';
+import { SetupButtons, setGlobalEditor } from './utils/setup';
 
 let globalEditor = null;
 
@@ -16,27 +17,12 @@ const handleD3Data = (event) => {
     console.log(event.detail);
 };
 
-export function SetupButtons() {
 
-    document.getElementById('play').addEventListener('click', () => globalEditor.evaluate());
-    document.getElementById('stop').addEventListener('click', () => globalEditor.stop());
-    document.getElementById('process').addEventListener('click', () => {
-        Proc()
-    }
-    )
-    document.getElementById('process_play').addEventListener('click', () => {
-        if (globalEditor != null) {
-            Proc()
-            globalEditor.evaluate()
-        }
-    }
-    )
-}
 
 
 
 export function ProcAndPlay() {
-    if (globalEditor != null && globalEditor.repl.state.started == true) {
+    if (globalEditor != null && globalEditor.repl.state.started === true) {
         console.log(globalEditor)
         Proc()
         globalEditor.evaluate();
@@ -97,6 +83,8 @@ useEffect(() => {
                     await Promise.all([loadModules, registerSynthSounds(), registerSoundfonts()]);
                 },
             });
+        
+        setGlobalEditor(globalEditor);
             
         document.getElementById('proc').value = stranger_tune
         SetupButtons()
