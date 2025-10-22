@@ -10,6 +10,8 @@ import { registerSoundfonts } from '@strudel/soundfonts';
 import { stranger_tune } from './tunes';
 import console_monkey_patch, { getD3Data } from './console-monkey-patch';
 import { SetupButtons, setGlobalEditor } from './utils/setup';
+import { setProcEditor, Proc } from './utils/proc';
+import { setProcAndPlayEditor, ProcAndPlay } from './utils/procAndPlay';
 
 let globalEditor = null;
 
@@ -17,29 +19,6 @@ const handleD3Data = (event) => {
     console.log(event.detail);
 };
 
-
-
-
-
-export function ProcAndPlay() {
-    if (globalEditor != null && globalEditor.repl.state.started === true) {
-        console.log(globalEditor)
-        Proc()
-        globalEditor.evaluate();
-    }
-}
-
-
-
-export function ProcessText(match, ...args) {
-
-    let replace = ""
-    if (document.getElementById('flexRadioDefault2').checked) {
-        replace = "_"
-    }
-
-    return replace
-}
 
 export default function StrudelDemo() {
 
@@ -79,6 +58,8 @@ useEffect(() => {
             });
         
         setGlobalEditor(globalEditor);
+        setProcEditor(globalEditor);
+        setProcAndPlayEditor(globalEditor);
             
         document.getElementById('proc').value = stranger_tune
         SetupButtons()

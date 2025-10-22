@@ -1,6 +1,8 @@
+import { ProcessText } from "./processText";
+
 let globalEditor = null 
 
-export function setGlobalEditor(editor) {
+export function setProcEditor(editor) {
     globalEditor = editor;
 }
 
