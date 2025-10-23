@@ -14,6 +14,7 @@ import { SetupButtons} from './utils/setup';
 import { Proc } from './utils/proc';
 import { ProcAndPlay } from './utils/procAndPlay';
 import { setGlobalEditor } from './utils/editorContext';
+import SaveSoundButton from './components/saveSound';
 
 let globalEditor = null;
 
@@ -93,8 +94,9 @@ return (
                             <button id="process_play" className="btn">Proc & Play</button>
                             <button id="play" className="btn">Play</button>
                             <button id="stop" className="btn">Stop</button>
-                        </div>
 
+                            <SaveSoundButton textareaId='proc' />
+                        </div>
                     </div>
                 </div>
                 <div className="row">
