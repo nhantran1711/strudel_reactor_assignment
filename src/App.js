@@ -15,6 +15,7 @@ import { Proc } from './utils/proc';
 import { ProcAndPlay } from './utils/procAndPlay';
 import { setGlobalEditor } from './utils/editorContext';
 import SaveSoundButton from './components/saveSound';
+import TempoSlider from './components/tempoSlider';
 
 let globalEditor = null;
 
@@ -96,6 +97,9 @@ return (
                             <button id="stop" className="btn">Stop</button>
 
                             <SaveSoundButton textareaId='proc' />
+
+                            <h2>Audio Control</h2>
+                            <TempoSlider defaultTempo={140} min={0.5} max={2} step={0.01} />
                         </div>
                     </div>
                 </div>
