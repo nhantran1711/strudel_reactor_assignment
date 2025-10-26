@@ -37,6 +37,7 @@ export default function TempoSlider( {
         }
         textArea.value = newLines.join("\n");
     }
+    
     useEffect(() => handleTempoChange({ target: { value: tempo } }), []);
 
     return (

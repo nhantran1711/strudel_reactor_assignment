@@ -1,6 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { StrudelMirror } from '@strudel/codemirror';
 import { evalScope } from '@strudel/core';
 import { drawPianoroll } from '@strudel/draw';
@@ -12,10 +12,11 @@ import { stranger_tune } from './tunes';
 import console_monkey_patch, { getD3Data } from './console-monkey-patch';
 import { SetupButtons} from './utils/setup';
 import { Proc } from './utils/proc';
-import { ProcAndPlay } from './utils/procAndPlay';
 import { setGlobalEditor } from './utils/editorContext';
 import SaveSoundButton from './components/saveSound';
 import TempoSlider from './components/tempoSlider';
+import Instrumental from './components/instrumental';
+
 
 let globalEditor = null;
 
@@ -26,7 +27,10 @@ const handleD3Data = (event) => {
 
 export default function StrudelDemo() {
 
+const defaultTrack = stranger_tune
 const hasRun = useRef(false);
+const [procText, setProcText] = useState(defaultTrack)
+
 
 useEffect(() => {
 
@@ -83,7 +87,7 @@ return (
                     {/* Text Process */}
                     <div className="col-md-8">
                         <label htmlFor="exampleFormControlTextarea1" className="form-label text-dark fw-medium">Type your beat here:...</label>
-                        <textarea className="form-control" rows={15} id="proc" ></textarea>
+                        <textarea className="form-control" rows={15} id="proc" value={procText} onChange={(e) => setProcText(e.target.value)} ></textarea>
                     </div>
 
                     {/* Control Panel */}
@@ -100,6 +104,8 @@ return (
 
                             <h2>Audio Control</h2>
                             <TempoSlider defaultTempo={140} min={0.5} max={2} step={0.01} />
+                            <Instrumental />
+
                         </div>
                     </div>
                 </div>
@@ -107,20 +113,6 @@ return (
                     <div className="col-md-8" style={{ maxHeight: '50vh', overflowY: 'auto' }}>
                         <div id="editor" />
                         <div id="output" className='mt-2' />
-                    </div>
-                    <div className="col-md-4">
-                        <div className="form-check">
-                            <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" onChange={ProcAndPlay} defaultChecked />
-                            <label className="form-check-label" htmlFor="flexRadioDefault1">
-                                p1: ON
-                            </label>
-                        </div>
-                        <div className="form-check">
-                            <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" onChange={ProcAndPlay} />
-                            <label className="form-check-label" htmlFor="flexRadioDefault2">
-                                p1: HUSH
-                            </label>
-                        </div>
                     </div>
                 </div>
             </div>

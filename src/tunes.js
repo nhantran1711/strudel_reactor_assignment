@@ -40,6 +40,7 @@ const pattern = 0
 const bass = 0
 
 bassline:
+<p1_Radio>
 note(pick(basslines, bass))
 .sound("supersaw")
 .postgain(2)
@@ -50,6 +51,7 @@ note(pick(basslines, bass))
 
 
 main_arp: 
+<p2_Radio>
 note(pick(arpeggiator1, "<0 1 2 3>/2"))
 .sound("supersaw")
 .lpf(300)
@@ -60,6 +62,7 @@ note(pick(arpeggiator1, "<0 1 2 3>/2"))
 
 
 drums:
+<p3_Radio>
 stack(
   s("tech:5")
   .postgain(6)
@@ -78,6 +81,7 @@ stack(
 )
 
 drums2: 
+<p4_Radio>
 stack(
   s("[~ hh]*4").bank("RolandTR808").room(0.3).speed(0.75).gain(1.2),
   s("hh").struct("x*16").bank("RolandTR808")
