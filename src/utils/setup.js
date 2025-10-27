@@ -1,5 +1,6 @@
 import { Proc } from "./proc";
 import { getGlobalEditor} from "./editorContext";
+import { ProcAndPlay } from "./procAndPlay";
 
 
 
@@ -34,7 +35,7 @@ export function SetupButtons() {
             console.warn("Not ready for Process and Play")
             return;
         }
-        Proc();
+        ProcAndPlay();
         globalEditor.evaluate();
     }
     )
