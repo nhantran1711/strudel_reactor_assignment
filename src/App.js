@@ -16,7 +16,7 @@ import { setGlobalEditor } from './utils/editorContext';
 import SaveSoundButton from './components/saveSound';
 import TempoSlider from './components/tempoSlider';
 import Instrumental from './components/instrumental';
-
+import { SetupEffectHotkeys } from './components/hotkeys';
 
 let globalEditor = null;
 
@@ -70,6 +70,7 @@ useEffect(() => {
         
         document.getElementById('proc').value = stranger_tune
         SetupButtons()
+        SetupEffectHotkeys()
         Proc()
     }
 

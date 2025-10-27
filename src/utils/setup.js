@@ -14,6 +14,7 @@ export function SetupButtons() {
         else {
             console.warn("Not ready to PLAY");
         }
+        document.activeElement.blur();
     });
     document.getElementById('stop').addEventListener('click', () => {
         const globalEditor = getGlobalEditor();
@@ -23,9 +24,11 @@ export function SetupButtons() {
         else {
             console.warn("Not ready to STOP");
         }
+        document.activeElement.blur();
     });
     document.getElementById('process').addEventListener('click', () => {
         Proc()
+        document.activeElement.blur();
     }
     )
     document.getElementById('process_play').addEventListener('click', () => {
@@ -37,6 +40,7 @@ export function SetupButtons() {
         }
         ProcAndPlay();
         globalEditor.evaluate();
+        document.activeElement.blur();
     }
     )
 }
