@@ -17,6 +17,7 @@ import SaveSoundButton from './components/saveSound';
 import TempoSlider from './components/tempoSlider';
 import Instrumental from './components/instrumental';
 import { SetupEffectHotkeys } from './components/hotkeys';
+import D3Graph from "./components/d3graph";
 
 let globalEditor = null;
 
@@ -116,6 +117,11 @@ return (
                         <div id="output" className='mt-2' />
                     </div>
                 </div>
+                 <div style={{ background: "#1e293b", color: "white", minHeight: "100vh", padding: "1rem" }}>
+                    <h1 style={{ fontSize: "1.5rem", fontWeight: "bold" }}> D3 Graph</h1>
+                        
+                        <D3Graph />
+                    </div>
             </div>
             <canvas id="roll"></canvas>
         </main >

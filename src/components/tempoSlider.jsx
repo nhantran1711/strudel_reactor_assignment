@@ -36,6 +36,7 @@ export default function TempoSlider( {
             newLines.unshift(newCps)
         }
         textArea.value = newLines.join("\n");
+        console.log("%c[hap] " + value, "color: cyan");
     }
     
     useEffect(() => handleTempoChange({ target: { value: tempo } }), []);
