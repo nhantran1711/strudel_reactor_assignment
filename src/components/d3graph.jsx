@@ -6,6 +6,12 @@ import {useEffect, useRef} from 'react'
 export default function D3Graph({ liveUpdate = true}) {
     // Use reference of svg
     const svgCur = useRef(null);
+    const liveUp = useRef(liveUpdate)
+
+    // May be useRef will work this
+    useEffect(() => {
+        liveUp.current = liveUpdate
+    }, [liveUpdate])
 
     useEffect(() => {
         
@@ -35,7 +41,7 @@ export default function D3Graph({ liveUpdate = true}) {
         // Update the old graph with new numerical data
         const updateGraph = (data) => {
 
-            if (!liveUpdate) return; // If they toggle nunthing, just skip the update
+            if (!liveUp.current) return; // If they toggle nunthing, just skip the update
 
             const values = data
                 .map((v) => parseFloat(v))
@@ -83,7 +89,7 @@ export default function D3Graph({ liveUpdate = true}) {
 
             subscribe("d3Data", handleNewEvents)
             return () => unsubscribe("d3Data", handleNewEvents)
-    }, [liveUpdate])
+    }, [])
 
     return (
         <div>
