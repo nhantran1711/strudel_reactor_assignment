@@ -1,5 +1,7 @@
 
 import { useState, useEffect } from "react";
+import { getGlobalEditor } from "../utils/editorContext";
+import { ProcessText } from "../utils/processText";
 
 export default function TempoSlider( {
     defaultTempo = 140,
@@ -36,10 +38,19 @@ export default function TempoSlider( {
             newLines.unshift(newCps)
         }
         textArea.value = newLines.join("\n");
+
+        const globalEditor = getGlobalEditor()
+        if (!globalEditor) return;
+
+        const processedCode = ProcessText(textArea.value)
+        globalEditor.setCode(processedCode)
+        globalEditor.evaluate();
+
+        // Log the tempo change for D3 Graph
         console.log("%c[hap] " + value, "color: cyan");
+
     }
-    
-    useEffect(() => handleTempoChange({ target: { value: tempo } }), []);
+
 
     return (
         <div className="tempo-slider mb-3">
