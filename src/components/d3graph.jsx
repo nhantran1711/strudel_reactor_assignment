@@ -3,7 +3,7 @@ import { getD3Data, subscribe, unsubscribe } from '../console-monkey-patch';
 import {useEffect, useRef} from 'react'
 
 
-export default function D3Graph() {
+export default function D3Graph({ liveUpdate = true}) {
     // Use reference of svg
     const svgCur = useRef(null);
 
@@ -34,6 +34,9 @@ export default function D3Graph() {
 
         // Update the old graph with new numerical data
         const updateGraph = (data) => {
+
+            if (!liveUpdate) return; // If they toggle nunthing, just skip the update
+
             const values = data
                 .map((v) => parseFloat(v))
                 .filter((v) => !isNaN(v));
@@ -80,7 +83,7 @@ export default function D3Graph() {
 
             subscribe("d3Data", handleNewEvents)
             return () => unsubscribe("d3Data", handleNewEvents)
-    }, [])
+    }, [liveUpdate])
 
     return (
         <div>

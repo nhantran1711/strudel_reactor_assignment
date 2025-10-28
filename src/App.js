@@ -31,7 +31,9 @@ export default function StrudelDemo() {
 const defaultTrack = stranger_tune
 const hasRun = useRef(false);
 const [procText, setProcText] = useState(defaultTrack)
+const [liveUpdate, setLiveUpdate] = useState(true)
 
+const toggleUpdate = () => setLiveUpdate(!liveUpdate)
 
 useEffect(() => {
 
@@ -117,11 +119,12 @@ return (
                         <div id="output" className='mt-2' />
                     </div>
                 </div>
-                 <div style={{ background: "#1e293b", color: "white", minHeight: "100vh", padding: "1rem" }}>
-                    <h1 style={{ fontSize: "1.5rem", fontWeight: "bold" }}> D3 Graph</h1>
-                        
-                        <D3Graph />
-                    </div>
+                <div className="form-check form-switch" data-bs-toggle="tooltip" title="Enable or disable live D3 updates">
+                    <label className="form-check-label" htmlFor="liveToggle"> {liveUpdate ? "ON" : "OFF"}  </label>
+                    <input className="form-check-input" type="checkbox" id="liveToggle" checked={liveUpdate} onChange={toggleUpdate} />
+                </div>
+
+                <D3Graph liveUpdates={liveUpdate} />
             </div>
             <canvas id="roll"></canvas>
         </main >
