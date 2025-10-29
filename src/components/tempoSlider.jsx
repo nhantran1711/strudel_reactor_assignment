@@ -54,6 +54,7 @@ export default function TempoSlider( {
 
     return (
         <div className="tempo-slider mb-3">
+            <h6 className="tempo-label">Tempo</h6>
             <input
                 type="range"
                 min={min}
@@ -61,7 +62,7 @@ export default function TempoSlider( {
                 step={step}
                 value={tempo}
                 onChange={handleTempoChange}
-                className="form-change"
+                className="dj-slider"
             ></input>
         </div>
     )
