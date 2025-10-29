@@ -81,55 +81,62 @@ useEffect(() => {
 
 
 return (
-    <div>
-        <h2>Cooking up some beat</h2>
-        <main>
 
-            <div className="container-fluid">
-                <div className="row">
+    <div className="container-fluid min-vh-100 d-grid gap-4 p-4 app-grid">
 
-                    {/* Text Process */}
-                    <div className="col-md-8">
-                        <label htmlFor="exampleFormControlTextarea1" className="form-label text-dark fw-medium">Type your beat here:...</label>
-                        <textarea className="form-control" rows={15} id="proc" value={procText} onChange={(e) => setProcText(e.target.value)} ></textarea>
-                    </div>
+        <div className="panel panel-controls">
+            <h5 className="panel-title text-success">Controls</h5>
+            <div className="pad-grid">
+                <button className="dj-btn btn-green" id='process_play'>Start</button>
+                <button className="dj-btn btn-blue" id='play'>Play</button>
+                <button className="dj-btn btn-purple" id='stop'>Stop</button>
+                <button className="dj-btn btn-gray" id='process'>Process</button>
+            </div>
+        </div>
 
-                    {/* Control Panel */}
-                    <div className="col-md-4">
-                        <div className="control-panel">
-                            <h5 className="text-center text-dark mb-3 fw-semibold" >Control Panel</h5>
+        <div className="panel panel-notepad shadow-lg">
+            <h5 className="panel-title text-purple">Music Notepad</h5>
+            <textarea
+                className="music-textarea form-control"
+                rows="10"
+                id="proc"
+                value={procText}
+                onChange={(e) => setProcText(e.target.value)}
+                placeholder="Write your strudel sequences here..."></textarea>
+        </div>
 
-                            <button id="process" className="btn">Preprocess</button>
-                            <button id="process_play" className="btn">Proc & Play</button>
-                            <button id="play" className="btn">Play</button>
-                            <button id="stop" className="btn">Stop</button>
 
-                            <SaveSoundButton textareaId='proc' />
+        <div className="panel panel-effects">
+            <h5 className="panel-title text-blue">Effects</h5>
+            <div className="d-grid gap-2">
+                <SaveSoundButton textareaId='proc' /> 
+                <TempoSlider />
+                <Instrumental />
+            </div>
+        </div>
 
-                            <h2>Audio Control</h2>
-                            <TempoSlider defaultTempo={140} min={0.5} max={2} step={0.01} />
-                            <Instrumental />
+        <div className="panel panel-canvas">
+            <h6 className="panel-subtitle text-blue">Canvas</h6>
+            <div className="canvas-container">
+                <canvas id="roll"></canvas> 
+            </div>
+        </div>
 
-                        </div>
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col-md-8" style={{ maxHeight: '50vh', overflowY: 'auto' }}>
-                        <div id="editor" />
-                        <div id="output" className='mt-2' />
-                    </div>
-                </div>
-                <div className="form-check form-switch" data-bs-toggle="tooltip" title="Enable or disable live D3 updates">
-                    <label className="form-check-label" htmlFor="liveToggle"> {liveUpdate ? "ON" : "OFF"}  </label>
-                    <input className="form-check-input" type="checkbox" id="liveToggle" checked={liveUpdate} onChange={toggleUpdate} />
-                </div>
 
+        <div className="panel panel-code">
+            <h6 className="panel-subtitle text-purple">Strudel Code</h6>
+            <div id="editor"></div>
+            <div id="output" className="mt-2"></div>
+        </div>
+
+
+        <div className="panel panel-graph">
+            <h6 className="panel-subtitle text-blue">Live Graph</h6>
+            <div className="canvas-container">
                 <D3Graph liveUpdates={liveUpdate} />
             </div>
-            <canvas id="roll"></canvas>
-        </main >
-    </div >
-);
+        </div>
 
-
+    </div>
+    )
 }

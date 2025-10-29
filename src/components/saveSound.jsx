@@ -24,9 +24,9 @@ export default function SaveSoundButton( {textareaId = "proc"}) {
         }
     }
     return (
-        <div className="d-flex gap-2 mt-3">
-            <button className="btn btn-outline-primary" onClick={handleSave}> Save Beat</button>
-            <button className="btn btn-outline-secondary" onClick={handleLoad}>Load Beat</button>
+        <div >
+            <button onClick={handleSave}> Save Beat</button>
+            <button onClick={handleLoad}>Load Beat</button>
         </div>
     );
 }

@@ -14,20 +14,20 @@ export default function D3Graph({ liveUpdate = true}) {
     }, [liveUpdate])
 
     useEffect(() => {
+
+        // Default variables
+        const defaultWidth = 420
+        const defaultHeight = 200
+        const margin = { top: 20, right: 20, bottom: 30, left: 85 };
         
         // Select the current working svg in App.js
         if (!svgCur.current) return;
 
         const svg = d3.select(svgCur.current)
-            .attr('width', 800)
-            .attr('height', 400)
+            .attr('width', defaultWidth)
+            .attr('height', defaultHeight)
             .attr('overflow', 'visible')
             .attr('background', '282c34')
-
-        // Default variables
-        const defaultWidth = 800
-        const defaultHeight = 400
-        const margin = { top: 20, right: 20, bottom: 30, left: 40 };
 
         const xScale = d3.scaleLinear().range([margin.left, defaultWidth - margin.right])
         const yScale = d3.scaleLinear().range([defaultHeight - margin.bottom, margin.top])
@@ -64,6 +64,8 @@ export default function D3Graph({ liveUpdate = true}) {
             svg.append("g")
                 .attr("transform", `translate(${margin.left},0)`)
                 .call(yAxis)
+                .call(g => g.selectAll("line").attr("stroke", "#333"))
+                .call(g => g.selectAll("text").attr("fill", "#C2E78D"));
 
             svg.append("path")
                 .datum(values)
@@ -78,6 +80,7 @@ export default function D3Graph({ liveUpdate = true}) {
                 .attr("cx", (data, i) => xScale(i))
                 .attr("cy", (d) => yScale(d))
                 .attr("r", 3)
+                .attr("fill", "#C792E9");
             };
             
             // Init rendering
@@ -92,7 +95,7 @@ export default function D3Graph({ liveUpdate = true}) {
     }, [])
 
     return (
-        <div>
+        <div className="d3-container">
             <svg ref={svgCur}></svg>
         </div>
     )
