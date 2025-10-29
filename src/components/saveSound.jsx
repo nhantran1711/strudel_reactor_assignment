@@ -24,9 +24,9 @@ export default function SaveSoundButton( {textareaId = "proc"}) {
         }
     }
     return (
-        <div >
-            <button onClick={handleSave}> Save Beat</button>
-            <button onClick={handleLoad}>Load Beat</button>
+        <div className="dj-btn-group" >
+            <button onClick={handleSave} className="dj-btn btn-kindawhite" > Save Beat</button>
+            <button onClick={handleLoad} className="dj-btn btn-lightgreen" >Load Beat</button>
         </div>
     );
 }

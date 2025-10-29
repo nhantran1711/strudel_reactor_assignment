@@ -78,9 +78,15 @@
   font-weight: bold;
 }
 
-.text-success { color: var(--green) !important; }
-.text-blue { color: var(--blue) !important; }
-.text-purple { color: var(--purple) !important; }
+.text-success { 
+  color: var(--green) !important; 
+}
+.text-blue { 
+  color: var(--blue) !important; 
+}
+.text-purple { 
+  color: var(--purple) !important; 
+}
 
 .panel-controls { grid-area: controls; }
 .panel-notepad { grid-area: notepad; }
@@ -176,8 +182,16 @@ canvas {
 .btn-blue { background-color: var(--blue); }
 .btn-purple { background-color: var(--purple); }
 .btn-gray { background-color: var(--gray); }
+.btn-kindawhite {background-color: #EBF5EE; color: #000;}
+.btn-lightgreen {background-color: #72E1D1; color: #fff}
 
 .dj-btn:active {
   transform: scale(0.95);
   filter: brightness(0.8);
+}
+
+.dj-btn-group {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
 }
