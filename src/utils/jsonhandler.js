@@ -57,8 +57,34 @@ export function importSettings(json) {
         if (globalEditor) {
             const text = document.getElementById('proc')
             if (text) {
+                // Use the logic of settings value in tempo to set up in here
+                const tempoValue = curSettings.value;
+                const defaultTempo = 140;
+                const cps = (defaultTempo * tempoValue) / 60 / 4
+                const newCps = `setcps(${cps})`
+
+                const lines = text.value.split("\n")
+
+                let flag = false
+                
+                // Use to find the line starts with setcps to change the settings for tempo value
+                const updateLines = lines.map(line => {
+                    if (line.startsWith("setcps(")) {
+                        flag = true;
+                        return newCps
+                    }
+                    return line
+                })
+                
+                // If we didnt found the setcps aka it does not exists
+                if (!flag) return updateLines.unshift(newCps)
+                text.value = updateLines.join("\n")
+                
+
+                // Logic for update the new code into text area and strudel code
                 const code = text.value
                 const processed = ProcessText(code);
+
                 globalEditor.setCode(processed)
                 globalEditor.evaluate()
                 console.log("Imported")
