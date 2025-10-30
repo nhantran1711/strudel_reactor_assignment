@@ -2,17 +2,35 @@
 
 let curSettings = {
     tempo : null,
-    instrument : {}
+    instruments : {}
 }
 
 export function getSettings() {
-    curSettings = JSON.parse(localStorage.getItem('musicalSetting')) // Get storing local storage
+    const data = JSON.parse(localStorage.getItem('musicalSetting')) // Get storing local storage
+
+    if (data) {
+        curSettings = data
+        return data
+    }
+
+    // No data, get the default
+    curSettings = {
+        tempo : 1,
+        instruments : {
+            p1_radio: true, 
+            p2_radio: true, 
+            p3_radio: true, 
+            p4_radio: true 
+        }
+    }
+    localStorage.setItem('musicalSetting', JSON.stringify(curSettings))
     return curSettings
 }
 
 export function setSettings(obj) {
     curSettings = {...curSettings, ...obj} // Merge the cur settings with the saving one
     localStorage.setItem('musicalSetting', JSON.stringify(curSettings)) 
+    window.dispatchEvent(new Event("tempo")) // notify slider to update
 }
 
 export function exportSettings() {
@@ -28,6 +46,7 @@ export function importSettings(json) {
         curSettings = {...curSettings, ...parsedSettings} // Merge the cur with the newly parse
         localStorage.setItem("musicalSetting", JSON.stringify(curSettings))
         window.dispatchEvent(new Event("instrumentsImported")); // Instruments react with new update inmediately
+        window.dispatchEvent(new Event("tempo")); // Tempo react with new update 
         return curSettings
     }
     catch (err) {

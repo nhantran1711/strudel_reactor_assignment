@@ -1,5 +1,5 @@
 
-import { useState} from "react";
+import { useState, useEffect } from "react";
 import { getGlobalEditor } from "../utils/editorContext";
 import { ProcessText } from "../utils/processText";
 import { getSettings, setSettings } from "../utils/jsonhandler";
@@ -11,7 +11,7 @@ export default function TempoSlider( {
     step = 0.5
 }) {
     const savedSetting = getSettings();
-    const [tempo, setTempo] = useState( savedSetting || 1);
+    const [tempo, setTempo] = useState( savedSetting.tempo || 1);
 
     const handleTempoChange = (e) => {
 
@@ -51,8 +51,17 @@ export default function TempoSlider( {
 
         // Log the tempo change for D3 Graph
         console.log("%c[hap] " + value, "color: cyan");
-
     }
+
+    useEffect(() => {
+        const updateTempo = () => {
+        const setting = getSettings()
+        setTempo(setting.tempo)
+    }
+
+    window.addEventListener("tempo", updateTempo)
+    return () => window.removeEventListener("tempo", updateTempo)
+    }, [])
 
 
     return (
