@@ -27,6 +27,7 @@ export function importSettings(json) {
         const parsedSettings = JSON.parse(json)
         curSettings = {...curSettings, ...parsedSettings} // Merge the cur with the newly parse
         localStorage.setItem("musicalSetting", JSON.stringify(curSettings))
+        window.dispatchEvent(new Event("instrumentsImported")); // Instruments react with new update inmediately
         return curSettings
     }
     catch (err) {
