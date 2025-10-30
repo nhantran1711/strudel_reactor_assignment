@@ -49,8 +49,12 @@ export function importSettings(json) {
         curSettings = {...curSettings, ...parsedSettings} // Merge the cur with the newly parse
         localStorage.setItem("musicalSetting", JSON.stringify(curSettings))
 
-        window.dispatchEvent(new Event("instrumentsImported")); // Instruments react with new update inmediately
-        window.dispatchEvent(new Event("tempo")); // Tempo react with new update 
+        // Deley re-render as I got a bug where stuff does not update well
+        setTimeout(() => {
+            window.dispatchEvent(new Event("instrumentsImported")); // Instruments react with new update inmediately
+            window.dispatchEvent(new Event("tempo")); // Tempo react with new update 
+        }, 50)
+
 
         // Let me see if I can make this auto runs
         const globalEditor = getGlobalEditor()
@@ -58,7 +62,7 @@ export function importSettings(json) {
             const text = document.getElementById('proc')
             if (text) {
                 // Use the logic of settings value in tempo to set up in here
-                const tempoValue = curSettings.value;
+                const tempoValue = curSettings.tempo;
                 const defaultTempo = 140;
                 const cps = (defaultTempo * tempoValue) / 60 / 4
                 const newCps = `setcps(${cps})`
