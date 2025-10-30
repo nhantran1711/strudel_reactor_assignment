@@ -114,10 +114,10 @@ return (
                 <TempoSlider />
                 <Instrumental />
             </div>
-            <div className='d-grid gap-2'>
-                <button onClick={() => alert(exportSettings())}>Export JSON</button>
-                <button onClick={() => {
-                    const json = prompt("Paste settings");
+            <div className='d-flex gap-2'>
+                <button className='dj-btn btn-blue' onClick={() => alert(exportSettings())}>Export JSON</button>
+                <button className='dj-btn btn-purple' onClick={() => {
+                    const json = prompt("Please paste the code....");
                     importSettings(json)
                 }}>Import JSON</button>
             </div>
