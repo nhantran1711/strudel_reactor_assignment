@@ -87,10 +87,10 @@ return (
         <div className="panel panel-controls">
             <h5 className="panel-title text-success">Controls</h5>
             <div className="pad-grid">
-                <button className="dj-btn btn-green" id='process_play'>Start</button>
-                <button className="dj-btn btn-blue" id='play'>Play</button>
+                <button className="dj-btn btn-green" id='process_play'>Play</button>
+                <button className="dj-btn btn-blue" id='play'>Run</button>
                 <button className="dj-btn btn-purple" id='stop'>Stop</button>
-                <button className="dj-btn btn-gray" id='process'>Process</button>
+                <button className="dj-btn btn-gray" id='process'>Update</button>
             </div>
         </div>
 
@@ -133,7 +133,7 @@ return (
         <div className="panel panel-graph">
             <h6 className="panel-subtitle text-blue">Live Graph</h6>
             <div className="canvas-container">
-                <D3Graph liveUpdates={liveUpdate} />
+                <D3Graph liveUpdate={liveUpdate} />
             </div>
         </div>
 
