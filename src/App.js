@@ -33,9 +33,6 @@ export default function StrudelDemo() {
 const defaultTrack = stranger_tune
 const hasRun = useRef(false);
 const [procText, setProcText] = useState(defaultTrack)
-const [liveUpdate, setLiveUpdate] = useState(true)
-
-const toggleUpdate = () => setLiveUpdate(!liveUpdate)
 
 useEffect(() => {
 
@@ -145,7 +142,7 @@ return (
         <div className="panel panel-graph">
             <h6 className="panel-subtitle text-blue">Live Graph</h6>
             <div className="canvas-container">
-                <D3Graph liveUpdate={liveUpdate} />
+                <D3Graph />
             </div>
         </div>
 

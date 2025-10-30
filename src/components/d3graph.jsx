@@ -3,15 +3,10 @@ import { getD3Data, subscribe, unsubscribe } from '../console-monkey-patch';
 import {useEffect, useRef} from 'react'
 
 
-export default function D3Graph({ liveUpdate = true}) {
+export default function D3Graph() {
     // Use reference of svg
     const svgCur = useRef(null);
-    const liveUp = useRef(liveUpdate)
 
-    // May be useRef will work this
-    useEffect(() => {
-        liveUp.current = liveUpdate
-    }, [liveUpdate])
 
     useEffect(() => {
 
@@ -40,8 +35,6 @@ export default function D3Graph({ liveUpdate = true}) {
 
         // Update the old graph with new numerical data
         const updateGraph = (data) => {
-
-            if (!liveUp.current) return; // If they toggle nunthing, just skip the update
 
             const values = data
                 .map((v) => parseFloat(v))
