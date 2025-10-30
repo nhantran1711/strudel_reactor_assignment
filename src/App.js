@@ -18,6 +18,7 @@ import TempoSlider from './components/tempoSlider';
 import Instrumental from './components/instrumental';
 import { SetupEffectHotkeys } from './components/hotkeys';
 import D3Graph from "./components/d3graph";
+import { exportSettings, importSettings } from './utils/jsonhandler';
 
 let globalEditor = null;
 
@@ -112,6 +113,13 @@ return (
                 <SaveSoundButton textareaId='proc' /> 
                 <TempoSlider />
                 <Instrumental />
+            </div>
+            <div className='d-grid gap-2'>
+                <button onClick={() => alert(exportSettings())}>Export JSON</button>
+                <button onClick={() => {
+                    const json = prompt("Paste settings");
+                    importSettings(json)
+                }}>Import JSON</button>
             </div>
         </div>
 

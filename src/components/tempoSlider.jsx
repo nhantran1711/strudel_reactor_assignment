@@ -2,6 +2,7 @@
 import { useState} from "react";
 import { getGlobalEditor } from "../utils/editorContext";
 import { ProcessText } from "../utils/processText";
+import { getSettings, setSettings } from "../utils/jsonhandler";
 
 export default function TempoSlider( {
     defaultTempo = 140,
@@ -9,12 +10,14 @@ export default function TempoSlider( {
     max = 2,
     step = 0.5
 }) {
-    const [tempo, setTempo] = useState(1);
+    const savedSetting = getSettings();
+    const [tempo, setTempo] = useState( savedSetting || 1);
 
     const handleTempoChange = (e) => {
 
         const value = parseFloat(e.target.value);
         setTempo(value)
+        setSettings( {tempo: value})
 
         const cps = (defaultTempo * value) / 60 / 4
         const newCps = `setcps(${cps})` // new value of cps
