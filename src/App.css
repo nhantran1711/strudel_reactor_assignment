@@ -278,3 +278,20 @@ canvas {
   font-weight: 500;
   color: #DDD8C4;
 }
+
+.instrumental-toggle {
+  background: #2E2A28;
+  border: none;
+  color: #797270;
+  padding: 0.4rem 0.6rem;
+  border-radius: 0.6rem;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: all 0.25s ease;
+}
+
+.instrumental-toggle.active {
+  background: #C2E78D;
+  color: #2E2A28;
+  box-shadow: 0 0 8px #C2E78D;
+}
