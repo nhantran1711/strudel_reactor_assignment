@@ -18,7 +18,7 @@ export default function D3Graph({ liveUpdate = true}) {
         // Default variables
         const defaultWidth = 420
         const defaultHeight = 200
-        const margin = { top: 20, right: 20, bottom: 30, left: 85 };
+        const margin = { top: 20, right: 85, bottom: 30, left: 85 };
         
         // Select the current working svg in App.js
         if (!svgCur.current) return;
@@ -73,14 +73,6 @@ export default function D3Graph({ liveUpdate = true}) {
                 .attr("stroke-width", 2)
                 .attr("d", line);
 
-            svg.selectAll("circle")
-                .data(values)
-                .enter()
-                .append("circle")
-                .attr("cx", (data, i) => xScale(i))
-                .attr("cy", (d) => yScale(d))
-                .attr("r", 3)
-                .attr("fill", "#C792E9");
             };
             
             // Init rendering
