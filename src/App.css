@@ -224,3 +224,57 @@ canvas {
   align-items: center;
   gap: 1rem;
 }
+
+
+
+.instrumentals {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #3D3836;
+  border-radius: 1rem;
+  padding: 1rem;
+  box-shadow: 0 0 10px rgba(0,0,0,0.4);
+  color: #C2E78D;
+}
+
+.instrumentals-header {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #81A9FF;
+  text-align: center;
+}
+
+.instrumental-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  width: 100%;
+  justify-items: center;
+}
+
+.instrumental-item {
+  background-color: #514B48;
+  border: 2px solid #797270;
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+  width: 100%;
+  text-align: center;
+}
+
+.instrumental-item:hover {
+  background-color: #5A524F;
+  transform: scale(1.05);
+}
+
+.instrumental-item label {
+  font-weight: 500;
+  color: #DDD8C4;
+}
