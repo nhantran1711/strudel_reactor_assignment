@@ -9,7 +9,7 @@ import { transpiler } from '@strudel/transpiler';
 import { getAudioContext, webaudioOutput, registerSynthSounds } from '@strudel/webaudio';
 import { registerSoundfonts } from '@strudel/soundfonts';
 import { stranger_tune } from './tunes';
-import console_monkey_patch, { getD3Data } from './console-monkey-patch';
+import console_monkey_patch from './console-monkey-patch';
 import { SetupButtons} from './utils/setup';
 import { Proc } from './utils/proc';
 import { setGlobalEditor } from './utils/editorContext';
@@ -19,6 +19,7 @@ import Instrumental from './components/instrumental';
 import { SetupEffectHotkeys } from './components/hotkeys';
 import D3Graph from "./components/d3graph";
 import { exportSettings, importSettings } from './utils/jsonhandler';
+import SpinningCat from './components/uiacat';
 
 let globalEditor = null;
 
@@ -92,6 +93,9 @@ return (
                 <button className="dj-btn btn-blue" id='play'>Run</button>
                 <button className="dj-btn btn-purple" id='stop'>Stop</button>
                 <button className="dj-btn btn-gray" id='process'>Update</button>
+            </div>
+            <div className='uiaioa'>
+                <SpinningCat className="cat"/>
             </div>
         </div>
 

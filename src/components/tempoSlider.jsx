@@ -48,6 +48,7 @@ export default function TempoSlider( {
         const processedCode = ProcessText(textArea.value)
         globalEditor.setCode(processedCode)
         globalEditor.evaluate();
+        window.dispatchEvent(new Event("musicPlay"));
 
         // Log the tempo change for D3 Graph
         console.log("%c[hap] " + value, "color: cyan");

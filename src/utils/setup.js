@@ -11,6 +11,7 @@ export function SetupButtons() {
         const globalEditor = getGlobalEditor();
         if (globalEditor) {
             globalEditor.evaluate()
+            window.dispatchEvent(new Event("musicPlay"));
         }
         document.activeElement.blur();
     });
@@ -18,6 +19,7 @@ export function SetupButtons() {
         const globalEditor = getGlobalEditor();
         if (globalEditor) {
             globalEditor.stop();
+            window.dispatchEvent(new Event("musicStop"));
         } 
         else {
             console.warn("Not ready to STOP");

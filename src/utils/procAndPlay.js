@@ -9,5 +9,6 @@ export function ProcAndPlay() {
         console.log(globalEditor)
         Proc()
         globalEditor.evaluate();
+        window.dispatchEvent(new Event("musicPlay"));
     }
 }

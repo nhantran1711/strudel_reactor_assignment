@@ -24,6 +24,7 @@ export function Proc() {
 
     if (started) {
         globalEditor.evaluate()
+        window.dispatchEvent(new Event("musicPlay"));
     }
 
 }

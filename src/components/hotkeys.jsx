@@ -14,12 +14,14 @@ function togglePlayStop() {
 
     if (count === 0) {
         globalEditor.stop()
+        window.dispatchEvent(new Event("musicStop"));
         count = count + 1
         isRunning = false
     }
     else {
         if (isRunning) {
             globalEditor.stop();
+            window.dispatchEvent(new Event("musicStop"));
             isRunning = false
         } 
         else {
@@ -58,6 +60,7 @@ function toggleMuteBassline() {
     const processedCode = ProcessText(baseTune);
     globalEditor.setCode(processedCode); // Set a new code
     globalEditor.evaluate(); // Run it again
+    window.dispatchEvent(new Event("musicPlay"));
 }
 
 export function SetupEffectHotkeys() {

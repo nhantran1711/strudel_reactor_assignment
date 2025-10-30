@@ -91,6 +91,7 @@ export function importSettings(json) {
 
                 globalEditor.setCode(processed)
                 globalEditor.evaluate()
+                window.dispatchEvent(new Event("musicPlay"));
                 console.log("Imported")
             }
             else {

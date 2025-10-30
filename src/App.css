@@ -294,3 +294,15 @@ canvas {
   color: #2E2A28;
   box-shadow: 0 0 8px #C2E78D;
 }
+
+.spinning-cat img {
+  width: 10rem;
+  height: 10rem;
+}
+
+.uiaioa {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  align-items: center;
+}
